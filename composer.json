@@ -32,8 +32,11 @@
     },
     "scripts": {
         "test": "phpunit tests",
-        "cs-fixer": "php-cs-fixer fix src"
-
+        "cs-fixer": "php-cs-fixer fix src",
+        "analyze": [
+            "composer install --working-dir=tools/phpstan",
+            "tools/phpstan/vendor/bin/phpstan analyze src --level 5"
+        ]
     },
     "replace": {
         "elendev/nexus-composer-push":  "*"

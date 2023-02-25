@@ -40,7 +40,7 @@ class Configuration
     /**
      * Get the Nexus extra values if available
      * @param $parameter
-     * @param null $default
+     * @param mixed $default
      * @return mixed|null
      */
     public function get($parameter, $default = null)
@@ -59,13 +59,11 @@ class Configuration
     /**
      * Return the package name based on the given name or the real package name.
      *
-     * @param \Symfony\Component\Console\Input\InputInterface|null $input
-     *
      * @return string
      */
     public function getPackageName()
     {
-        if ($this->input && $this->input->getOption('name')) {
+        if ($this->input->getOption('name')) {
             return $this->input->getOption('name');
         } else {
             return $this->composer->getPackage()->getName();

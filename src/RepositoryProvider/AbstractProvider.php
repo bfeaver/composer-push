@@ -135,7 +135,7 @@ abstract class AbstractProvider
 
                     return;
                 } catch (ClientException $e) {
-                    if ($e->getResponse()->getStatusCode() === '401') {
+                    if ($e->getResponse()->getStatusCode() === 401) {
                         if ($type === 'none') {
                             $this->getIO()
                                 ->write(
@@ -229,7 +229,7 @@ abstract class AbstractProvider
      */
     protected function getClient()
     {
-        if (empty($this->client)) {
+        if (null === $this->client) {
             $this->client = new Client([
                 'verify' => $this->configuration->getVerifySsl()
             ]);
@@ -240,7 +240,7 @@ abstract class AbstractProvider
     /**
      * Return the Progress Callback for Guzzle
      *
-     * @return callback
+     * @return callable
      */
     protected function getProgressCallback()
     {
